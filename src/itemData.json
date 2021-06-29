@@ -1,0 +1,101 @@
+{
+    "itemsData": [
+    {
+        "id":1,
+        "name":"Samsung Galaxy A12 64GB",
+        "unitPrice":29.708,
+        "stock":186
+    },
+    {
+        "id":2,
+        "name":"Samsung Galaxy S20 FE 128 GB",
+        "unitPrice":81.999,
+        "stock":110
+    },
+    {
+        "id":3,
+        "name":"Samsung Galaxy S21 Ultra 5G 256 GB",
+        "unitPrice":186.999,
+        "stock":102
+    },
+    {
+        "id":4,
+        "name":"Apple iPhone 11 (128 GB)",
+        "unitPrice":165.000,
+        "stock":302},
+    {
+        "id":5,
+        "name":"iPhone SE (2nd Generation) 128 GB",
+        "unitPrice":126.999,
+        "stock":194},
+    {
+        "id":6,
+        "name":"iPhone 7 32 GB",
+        "unitPrice":79.999,
+        "stock":312},
+    {
+        "id":7,
+        "name":"Sony PlayStation 5 825GB",
+        "unitPrice":169.999,
+        "stock":281},
+    {
+        "id":8,
+        "name":"Microsoft Xbox Series S 512GB",
+        "unitPrice":79.999,
+        "stock":170},
+    {
+        "id":9,
+        "name":"Nintendo Switch 32GB",
+        "unitPrice":63.499,
+        "stock":191},
+    {
+        "id":10,
+        "name":"MacBook Air A1466",
+        "unitPrice":154.999,
+        "stock":21},
+    {
+        "id":11,
+        "name":"Notebook Lenovo IdeaPad 14IIL05",
+        "unitPrice":97.257,
+        "stock":18},
+    {
+        "id":12,
+        "name":"Notebook Dell Inspiron 3501",
+        "unitPrice":98.990,
+        "stock":11},
+    {
+        "id":13,
+        "name":"Notebook Dell Inspiron 3505",
+        "unitPrice":104.605,
+        "stock":5},
+    {
+        "id":14,
+        "name":"Auriculares Gamer Redragon Zeus",
+        "unitPrice":6.999,
+        "stock":150},
+    {
+        "id":15,
+        "name":"Auriculares Gamer Redragon Ares",
+        "unitPrice":2.087,
+        "stock":17},
+    {
+        "id":16,
+        "name":"Auriculares Noga NGV-400",
+        "unitPrice":620,
+        "stock":30},
+    {
+        "id":17,
+        "name":"Monitor Gamer Curvo Samsung C24F390FH LED 24",
+        "unitPrice":26.999,
+        "stock":31},
+    {
+        "id":18,
+        "name":"Monitor Gamer LG 22MN430H LED 22",
+        "unitPrice":18.999,
+        "stock":50},
+    {
+        "id":19,
+        "name":"Monitor HP EliteDisplay E233 LED 23",
+        "unitPrice":28.999,
+        "stock":41}
+]}
