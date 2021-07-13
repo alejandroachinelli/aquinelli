@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Container, Header } from 'semantic-ui-react'
 import ItemList from '../ItemList/ItemList';
 
-function Itemcontainer(props) {
+function ItemListContainer(props) {
 
     const [items, setItems] = useState([]);
     const [error, setError] = useState(null);
@@ -10,16 +10,13 @@ function Itemcontainer(props) {
 
     useEffect(() => {
                 setTimeout(()=>{
-                    // Instale la dependencia npm install -g json-server
-                    // Luego corri con json-server --watch itemData.json que esta en la direccion aquinelli/src/itemData.json y me crea la direccion http://localhost:3000/itemsData
-                    // para poder usarlo en el fetch.
-                    // despues inicialice el proyecto en otro puerto para hacer la prueba
-                    fetch('http://localhost:3000/itemsData')
+                    fetch('https://mocki.io/v1/7b066785-9b5b-40e3-9a58-e7a9fc5bf7ec')
                         .then(res => res.json())
                         .then(
                             (result) => {
                             setIsLoaded(true);
-                            setItems(result);
+                            setItems(result.itemsData);
+                            console.log(result.itemsData);
                             },
                             (error) => {
                             setIsLoaded(true);
@@ -27,7 +24,7 @@ function Itemcontainer(props) {
                             }
                         )
                 },2000)
-            });
+            },[]);
 
     if(error){
         return (
@@ -76,4 +73,4 @@ function Itemcontainer(props) {
     }
 }
 
-export default Itemcontainer
+export default ItemListContainer

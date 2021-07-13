@@ -1,19 +1,21 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 import ItemCount from '../ItemCount/ItemCount';
+import './Item.css';
 
-function Item(props) {
+function Item({data}) {
 
     return (
         <>
-            <Card>
+            <Card key={data.id}>
+            <Image src={data.pictureUrl} wrapped ui={false} />
                 <Card.Content>
-                    <Card.Header>{props.name}</Card.Header>
+                    <Card.Header>{data.name}</Card.Header>
                     <Card.Description>
-                        ${props.unitPrice}
+                        ${data.unitPrice}
                     </Card.Description>
                 </Card.Content>
-                <ItemCount stock = {props.stock}>
+                <ItemCount stock = {data.stock} productId = {data.id}>
                 </ItemCount>
             </Card>
         </>
