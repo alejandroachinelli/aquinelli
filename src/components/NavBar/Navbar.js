@@ -8,13 +8,17 @@ function Navbar() {
     return (
             <Menu>
                 <Menu.Item>
-                    <Header as='h4' color='red'>
-                        Aquinelli
-                        <Header.Subheader>
-                        E-commerce
-                        </Header.Subheader>
-                    </Header>
-                    <Cardwidget/>
+                    <Link to='/'>
+                        <Header as='h4' color='red'>
+                            Aquinelli
+                            <Header.Subheader>
+                                E-commerce
+                            </Header.Subheader>
+                        </Header>
+                    </Link>
+                    <Link to='/'>
+                        <Cardwidget/>
+                    </Link>
                 </Menu.Item>
                 <Menu.Item>
                     <Link to='/'>
@@ -35,7 +39,7 @@ function Navbar() {
                                     Tienda
                             </Button.Content>
                             <Button.Content hidden>
-                                <Icon name="shopping cart"></Icon>
+                                <Icon name="list layout"></Icon>
                             </Button.Content>
                         </Button>
                     </Link>
@@ -48,6 +52,18 @@ function Navbar() {
                             </Button.Content>
                             <Button.Content hidden>
                                 <Icon name="exclamation circle"></Icon>
+                            </Button.Content>
+                        </Button>
+                    </Link>
+                </Menu.Item>
+                <Menu.Item position="right">
+                    <Link to="/cart">
+                        <Button animated>
+                            <Button.Content visible>
+                                    Carrito
+                            </Button.Content>
+                            <Button.Content hidden>
+                                <Icon name="shopping cart"/>
                             </Button.Content>
                         </Button>
                     </Link>

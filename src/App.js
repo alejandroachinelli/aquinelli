@@ -6,6 +6,7 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import { Container } from 'semantic-ui-react'
+import Cart from './components/Cart/Cart';
 
 class App extends React.Component{
   render(){
@@ -18,6 +19,7 @@ class App extends React.Component{
             <Route path="/store" exact component={ItemListContainer}/>
             <Route path="/store/:categoryId" exact component={ItemListContainer}/>
             <Route path="/detail/:id" exact component={ItemDetailContainer}/>
+            <Route path="/cart" exact component={Cart} />
           </Switch>
         </Container>
       </Router>

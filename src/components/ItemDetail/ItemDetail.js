@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container, Image, Grid, Card, Button } from 'semantic-ui-react'
+import { Container, Image, Grid, Card, Button, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 function ItemDetail({product}) {
 
@@ -32,6 +33,14 @@ function ItemDetail({product}) {
                             <Button>
                                 Agregar al carrito
                             </Button>
+                            <br></br>
+                            <br></br>
+                            <Link to="/store">
+                                <Button compact>
+                                    <Icon name="angle left"></Icon>
+                                    Volver
+                                </Button>
+                            </Link>
                         </Container>
                     </Card.Content>
                 </Grid.Column>

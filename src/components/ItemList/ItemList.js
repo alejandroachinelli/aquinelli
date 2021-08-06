@@ -8,7 +8,7 @@ function ItemList(props) {
         <Card.Group>
             {props.items.map((item, idx) => {
             return (
-                <Item key={idx} data={item}></Item>
+                <Item key={idx} item={item}></Item>
             );
         })}
         </Card.Group>
