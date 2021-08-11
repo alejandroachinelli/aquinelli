@@ -1,10 +1,12 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import React, {createContext, useState, useEffect, useContext} from "react";
 
+//Creamos el contexto
 export const CartContext = createContext({});
 
 export const useCartContext = () => useContext(CartContext);
 
-export const CartContextProvider = (props) => {
+//Provider
+export const CartProvider = (props) =>{
     const [cart, setCart] = useState([]);
     const [productsInCart, setProductsInCart] = useState(0);
     const [providerLoading, setProviderLoading] = useState(true);
@@ -17,7 +19,7 @@ export const CartContextProvider = (props) => {
 
     const addToCart = (item, quantity) => {
         if(isInCart(item.id)){
-            const newCart = cart.map(cartElement =>{
+            const newCart = cart.map(cartElement => {
                 if(cartElement.id === item.id){
                     return{...cartElement, quantity: cartElement.quantity + quantity}
                 }else return cartElement;
@@ -35,7 +37,7 @@ export const CartContextProvider = (props) => {
 
     useEffect(() => {
         const localCart = localStorage.getItem('cart');
-        if(!localCart) localStorage.setItem('cart', JSON.stringify([]));
+        if (!localCart) localStorage.setItem('cart', JSON.stringify([]));
         else setCart(JSON.parse(localCart));
         setProviderLoading(false);
     }, []);
@@ -48,16 +50,20 @@ export const CartContextProvider = (props) => {
         setProductsInCart(inCart);
     }, [cart]);
 
-    return <CartContext.Provider value={{
-            cart,
-            setCart,
-            clearCart,
-            addToCart,
-            realStock,
-            providerLoading,
-            productsInCart,
-            removeItem}}>
-            
-            {props.children}
-        </CartContext.Provider>
-}
+    //RETORNO DE CONTEXT
+    return(
+        <>
+            <CartContext.Provider value={{
+                cart,
+                setCart,
+                clearCart,
+                addToCart,
+                realStock,
+                providerLoading,
+                productsInCart,
+                removeItem}}>
+                {props.children}
+            </CartContext.Provider>
+        </>
+    );
+};

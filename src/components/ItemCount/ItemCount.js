@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Button, Icon, Popup } from 'semantic-ui-react';
 
-function ItemCount({stock, onAdd}){
+function ItemCount({stock, paramOnAdd}){
     const [numero, setNumero] = useState(0);
     let _stock = stock;
 
@@ -22,6 +22,10 @@ function ItemCount({stock, onAdd}){
 
         }
     };
+
+    const returnStock = () => {
+        setNumero(0);
+    }
 
     return (
         <Card.Content extra>
@@ -44,7 +48,10 @@ function ItemCount({stock, onAdd}){
             </div>
             <br></br>
             <br></br>
-            <Button compact color='green' onClick={() => onAdd(numero)}>
+            <Button compact color='green' onClick={() => {
+                paramOnAdd(numero);
+                returnStock();
+                }}>
                 Agregar al carrito
                 <Icon name="shopping cart"></Icon>
             </Button>

@@ -1,10 +1,12 @@
 import React from 'react';
-import { Button, Icon, Menu, Header } from 'semantic-ui-react';
+import { Button, Icon, Menu, Header, Label } from 'semantic-ui-react';
 import Cardwidget from '../Cardwidget/Cardwidget';
-
+import {useCartContext} from '../../context/CartContext'
 import { Link } from "react-router-dom";
 
 function Navbar() {
+    const {cart} = useCartContext();
+
     return (
             <Menu>
                 <Menu.Item>
@@ -58,13 +60,14 @@ function Navbar() {
                 </Menu.Item>
                 <Menu.Item position="right">
                     <Link to="/cart">
-                        <Button animated>
-                            <Button.Content visible>
-                                    Carrito
-                            </Button.Content>
-                            <Button.Content hidden>
+                        <Button as='div' labelPosition='right'>
+                            <Button color='green'>
                                 <Icon name="shopping cart"/>
-                            </Button.Content>
+                                Carrito
+                            </Button>
+                            <Label as='a' basic color='green' pointing='left'>
+                                {cart.reduce((acc, {quantity}) => acc + quantity, 0)}
+                            </Label>
                         </Button>
                     </Link>
                 </Menu.Item>

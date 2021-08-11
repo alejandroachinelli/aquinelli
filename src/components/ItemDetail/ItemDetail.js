@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom'
 
 function ItemDetail({product}) {
 
-    debugger;
-    console.log(product);
-
     return(
         <>
             <Grid>
@@ -16,7 +13,7 @@ function ItemDetail({product}) {
                             <Card.Content>
                                 <Card.Header>{product.name}</Card.Header>
                                 <Card.Meta>
-                                    <span className='date'>Precio: {product.unitPrice}</span>
+                                    <span className='date'>Precio: ${product.unitPrice}</span>
                                 </Card.Meta>
                                 <Card.Meta>
                                     <span className='date'>Stock: {product.stock}</span>

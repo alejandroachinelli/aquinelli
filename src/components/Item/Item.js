@@ -3,11 +3,11 @@ import { Card, Image } from 'semantic-ui-react';
 import ItemCount from '../ItemCount/ItemCount';
 import './Item.css';
 import { Link } from 'react-router-dom';
-import { useCartContext } from '../CartContext/CartContext';
+import { useCartContext } from '../../context/CartContext';
 
 const Item = ({item}) => {
     const {addToCart} = useCartContext();
-    const onAdd = qty => addToCart(item, qty);
+    const onAdd = (quantity) => addToCart(item, quantity);
 
     return (
         <>
@@ -24,7 +24,7 @@ const Item = ({item}) => {
                         </Card.Description>
                     </Card.Content>
                 </Link>
-                <ItemCount stock = {item.stock} onAdd = {onAdd}>
+                <ItemCount stock={item.stock} paramOnAdd={onAdd}>
                 </ItemCount>
             </Card>
         </>

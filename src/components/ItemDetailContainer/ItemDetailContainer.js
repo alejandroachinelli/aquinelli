@@ -2,29 +2,36 @@ import React, { useState, useEffect } from 'react'
 import { Container, Header } from 'semantic-ui-react'
 import ItemDetail from '../ItemDetail/ItemDetail'
 
+import {db} from '../firebase/index';
+
 function ItemDetailContainer({ match }) {
 
-    const itemId = parseInt(match.params.id);
+    const itemId = match.params.id;
 
     const [items, setItems] = useState([]);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
+    const datosFirebase = [];
+
+    const getProduct = () => {
+        db.collection("products").onSnapshot((querySnapshot) => {
+            querySnapshot.forEach(doc => {
+                datosFirebase.push({id: doc.id, ...doc.data()});
+            });
+            if(datosFirebase != null){
+                setIsLoaded(true);
+                setItems(datosFirebase);
+            }else{
+                setIsLoaded(true);
+                setError("Error al cargar productos");
+            }
+            setItems(datosFirebase);
+        });
+    };
 
     useEffect(() => {
         setTimeout(()=>{
-            fetch('https://mocki.io/v1/c89551d5-3b8e-4942-a119-b8d063ba9d64')
-                .then(res => res.json())
-                .then(
-                    (result) => {
-                    setIsLoaded(true);
-                    setItems(result.itemsData);
-                    console.log(result.itemsData);
-                    },
-                    (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                    }
-                )
+            getProduct();
         },2000)
     },[]);
 
@@ -39,7 +46,7 @@ function ItemDetailContainer({ match }) {
                     Error
                 </Header>
                 <Header.Subheader>
-                    Se produjo un error al cargar los detalles del producto: {error.message}
+                    Se produjo un error al cargar los detalles del producto: {error}
                     <br></br>
                     Lo estaremos solucionando. Lamentamos esto.
                 </Header.Subheader>

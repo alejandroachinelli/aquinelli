@@ -2,29 +2,36 @@ import React, { useState, useEffect } from 'react'
 import { Container, Header } from 'semantic-ui-react'
 import ItemList from '../ItemList/ItemList';
 
+import {db} from '../firebase/index';
+
 function ItemListContainer(props) {
 
     const [items, setItems] = useState([]);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
+    const datosFirebase = [];
+
+    const getProduct = () => {
+        db.collection("products").onSnapshot((querySnapshot) => {
+            querySnapshot.forEach(doc => {
+                datosFirebase.push({id: doc.id, ...doc.data()});
+            });
+            if(datosFirebase != null){
+                setIsLoaded(true);
+                setItems(datosFirebase);
+            }else{
+                setIsLoaded(true);
+                setError("Error al cargar productos");
+            }
+            setItems(datosFirebase);
+        });
+    };
 
     useEffect(() => {
-                setTimeout(()=>{
-                    fetch('https://mocki.io/v1/c89551d5-3b8e-4942-a119-b8d063ba9d64')
-                        .then(res => res.json())
-                        .then(
-                            (result) => {
-                            setIsLoaded(true);
-                            setItems(result.itemsData);
-                            console.log(result.itemsData);
-                            },
-                            (error) => {
-                            setIsLoaded(true);
-                            setError(error);
-                            }
-                        )
-                },2000)
-            },[]);
+        setTimeout(()=>{
+            getProduct();
+        },2000)
+    },[]);
 
     if(error){
         return (
@@ -33,7 +40,7 @@ function ItemListContainer(props) {
                     Error
                 </Header>
                 <Header.Subheader>
-                    Se produjo un error al cargar los productos: {error.message}
+                    Se produjo un error al cargar los productos: {error}
                     <br></br>
                     Lo estaremos solucionando. Lamentamos esto.
                 </Header.Subheader>
